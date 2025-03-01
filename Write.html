@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Me - Ange Elvis</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen">
+
+  <!-- Navigation Bar -->
+  <div class="absolute top-4 left-4">
+    <a href="index.html" class="px-4 py-2 bg-blue-500 text-white font-bold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition">
+      🏠 Home
+    </a>
+  </div>
+
+  <!-- Button to open the modal (Hidden since modal auto-opens) -->
+  <button id="openModal" class="hidden">📩 Write to Me</button>
+
+  <!-- Modal -->
+  <div id="contactModal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+    <div class="bg-gray-800 p-8 rounded-lg shadow-lg text-center w-11/12 max-w-xl">
+      <h2 class="text-2xl font-bold text-blue-400">📬 Contact Me</h2>
+      <p class="mt-2">You can reach me through the following platforms:</p>
+
+      <div class="mt-4 space-y-4">
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/wendpouité-ange-elvis-sawadogo-29751b287/" target="_blank" 
+           class="block bg-gray-700 px-4 py-2 rounded-lg text-blue-300 hover:bg-gray-600 transition">
+          🔗 LinkedIn
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/qr/XUAFLJIKEY63I1" target="_blank" 
+           class="block bg-green-600 px-4 py-2 rounded-lg text-white hover:bg-green-500 transition">
+          📱 WhatsApp
+        </a>
+
+        <!-- Phone Numbers -->
+        <div class="bg-gray-700 px-4 py-2 rounded-lg text-white">
+          📞 Phone: <br> +226 71 83 07 11 / +226 06 34 56 13
+        </div>
+
+        <!-- Email with Copy Button -->
+        <div class="bg-gray-700 px-4 py-2 rounded-lg relative">
+          <div class="text-white text-center font-semibold">
+            📧 Mail
+          </div>
+          <div class="flex justify-center items-center relative mt-1">
+            <div class="text-white text-center w-full">angeliwab@gmail.com</div>
+            <button onclick="copyEmail()" class="absolute right-2 bg-blue-500 px-3 py-1 text-white rounded-lg text-sm hover:bg-blue-400 transition">
+              📋 Copie
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Close Button -->
+      <button id="closeModal" class="mt-4 px-4 py-2 bg-red-500 rounded-lg hover:bg-red-400 transition">
+        ❌ Close
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Automatically show modal when arriving on the page
+    window.onload = function() {
+      document.getElementById("contactModal").classList.remove("hidden");
+    };
+
+    // Close modal and redirect to Home
+    document.getElementById("closeModal").addEventListener("click", function() {
+      window.location.href = "index.html";
+    });
+
+    // Function to copy the email
+    function copyEmail() {
+      navigator.clipboard.writeText("angeliwab@gmail.com").then(() => {
+        alert("📧 Email copied!");
+      });
+    }
+  </script>
+
+</body>
+</html>

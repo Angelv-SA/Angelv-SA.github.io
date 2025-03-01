@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diplomas - Ange Elvis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white transition-all duration-500">
+
+    <!-- Top Right Controls -->
+    <div class="absolute top-4 right-4 flex items-center space-x-4">
+        <button id="toggleTheme" class="px-4 py-2 bg-gray-700 rounded-lg">Dark / White</button>
+    </div>
+
+    <!-- Navbar -->
+    <div class="fixed top-0 left-0 w-full bg-gray-800 p-4 text-center">
+        <a href="index.html" class="text-blue-400 hover:text-white">🏠 Home</a>
+    </div>
+
+    <!-- Diplomas Section -->
+    <div class="mt-20 p-10 max-w-5xl mx-auto">
+        <h1 class="text-4xl font-bold text-blue-400 text-center">🎓 Diplomas & Certifications</h1>
+
+        <!-- Academic Degrees -->
+        <h2 class="mt-10 text-2xl font-bold text-blue-400">📜 Academic Degrees</h2>
+        <div class="mt-6 space-y-6">
+            <!-- Master Degree -->
+            <div class="flex items-center bg-gray-800 p-5 rounded-lg shadow-lg hover:shadow-xl transition">
+                <img src="images/LOGO1.jpeg" alt="UJK-Z Logo" class="w-20 h-20 object-contain mr-6">
+                <div>
+                    <p class="text-xl font-bold underline">Master’s Degree in Energy, Applied Solar Technologies (2024)</p>
+                    <p class="text-gray-400">Université Joseph Ki-Zerbo (UJK-Z)</p>
+                </div>
+            </div>
+
+            <!-- Engineering Degree -->
+            <div class="flex items-center bg-gray-800 p-5 rounded-lg shadow-lg hover:shadow-xl transition">
+                <img src="images/LOGO2.jpeg" alt="ISGE Logo" class="w-20 h-20 object-contain mr-6">
+                <div>
+                    <p class="text-xl font-bold underline">Engineering Degree in Electrical Engineering, Electrical Systems Engineering (2021)</p>
+                    <p class="text-gray-400">Institut Supérieur de Génie Électrique (ISGE)</p>
+                </div>
+            </div>
+
+            <!-- Higher Technician Diploma -->
+            <div class="flex items-center bg-gray-800 p-5 rounded-lg shadow-lg hover:shadow-xl transition">
+                <img src="images/LOGO2.jpeg" alt="ISGE Logo" class="w-20 h-20 object-contain mr-6">
+                <div>
+                    <p class="text-xl font-bold underline">Higher Technician Diploma in Industrial Electricity (2020)</p>
+                    <p class="text-gray-400">Institut Supérieur de Génie Électrique (ISGE)</p>
+                </div>
+            </div>
+
+            <!-- Baccalaureate -->
+            <div class="flex items-center bg-gray-800 p-5 rounded-lg shadow-lg hover:shadow-xl transition">
+                <img src="images/LOGO3.jpeg" alt="TABORIN Logo" class="w-20 h-20 object-contain mr-6">
+                <div>
+                    <p class="text-xl font-bold underline">Baccalaureate – D Series (2018)</p>
+                    <p class="text-gray-400">Établissement Gabriel TABORIN</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Training -->
+        <h2 class="mt-10 text-2xl font-bold text-blue-400">📚 Additional Training</h2>
+        <ul class="mt-6 space-y-4">
+            <li class="bg-gray-800 p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                <p class="text-xl font-bold underline">Training in Energy Auditing and Solar System Installation (2023)</p>
+                <p class="text-gray-400">Université Joseph Ki-Zerbo (UJK-Z)</p>
+            </li>
+            <li class="bg-gray-800 p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                <p class="text-xl font-bold underline">Training in Solar and Photovoltaic Installation (2023)</p>
+            </li>
+            <li class="bg-gray-800 p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                <p class="text-xl font-bold underline">Training in Embedded Electronics and IoT (2023)</p>
+                <p class="text-gray-400">WAKATLAB</p>
+            </li>
+
+            <li class="bg-gray-800 p-4 rounded-lg shadow-lg hover:shadow-xl transition">
+                <p class="text-xl font-bold underline">Training in Artificial Intelligence at the Interdisciplinary Center of Excellence in Artificial Intelligence for Development (2024)</p>
+                <p class="text-gray-400">CITADEL</p>
+            </li>
+
+
+
+          
+
+
+        </ul>
+    </div>
+
+    <script>
+        document.getElementById("toggleTheme").addEventListener("click", function () {
+            document.body.classList.toggle("bg-gray-900");
+            document.body.classList.toggle("bg-white");
+            document.body.classList.toggle("text-black");
+        });
+    </script>
+
+</body>
+</html>

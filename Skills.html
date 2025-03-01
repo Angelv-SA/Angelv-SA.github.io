@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Ange Elvis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .skill-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Navbar -->
+    <div class="fixed top-0 left-0 w-full bg-gray-800 p-4 text-center">
+        <a href="index.html" class="text-blue-400 hover:text-white">🏠 Home</a>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="mt-20 p-10 max-w-6xl mx-auto">
+        <h1 class="text-4xl font-bold text-blue-400 text-center">Skills</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-8">
+            <!-- Energy & Electricity -->
+            <div class="bg-gray-800 p-6 rounded-lg skill-card border-l-4 border-blue-400">
+                <h2 class="text-2xl font-bold text-blue-400">⚡ Energy & Electricity</h2>
+                <ul class="mt-3 space-y-2">
+                    <li>🔹 Solar technologies and energy efficiency</li>
+                    <li>🔹 Electrical systems engineering</li>
+                    <li>🔹 Installation and maintenance of photovoltaic systems</li>
+                    <li>🔹 Regulation and automation of electrical systems</li>
+                </ul>
+            </div>
+
+            <!-- Embedded Electronics & IoT -->
+            <div class="bg-gray-800 p-6 rounded-lg skill-card border-l-4 border-green-400">
+                <h2 class="text-2xl font-bold text-green-400">🔧 Embedded Electronics & IoT</h2>
+                <ul class="mt-3 space-y-2">
+                    <li>🔹 Design and programming of embedded systems</li>
+                    <li>🔹 Communication and integration of smart sensors</li>
+                    <li>🔹 Use of connected platforms for real-time supervision</li>
+                </ul>
+            </div>
+
+            <!-- Artificial Intelligence and Data Analysis -->
+            <div class="bg-gray-800 p-6 rounded-lg skill-card border-l-4 border-yellow-400">
+                <h2 class="text-2xl font-bold text-yellow-400">🤖 AI & Data Analysis</h2>
+                <ul class="mt-3 space-y-2">
+                    <li>🔹 Development of Machine Learning models (XGBoost, LSTM)</li>
+                    <li>🔹 Predictive analysis and anomaly detection</li>
+                </ul>
+            </div>
+
+            <!-- Programming and Software -->
+            <div class="bg-gray-800 p-6 rounded-lg skill-card border-l-4 border-red-400">
+                <h2 class="text-2xl font-bold text-red-400">💻 Programming & Software</h2>
+                <ul class="mt-3 space-y-2">
+                    <li>🔹 Languages: Python, C, C++</li>
+                    <li>🔹 Software: AutoCAD, PVSyst, Matlab, Arduino, Kicad, Proteus</li>
+                    <li>🔹 Office tools: Word, Excel, PowerPoint</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
