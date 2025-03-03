@@ -17,7 +17,6 @@
       border-style: solid;
       animation: borderAnimation 1.5s infinite alternate;
     }
-    /* Effet hover pour le bouton */
     .hover-effect:hover {
       transform: scale(1.1);
       box-shadow: 0 0 15px rgba(59,130,246,0.8);
@@ -83,12 +82,30 @@
       animation: slideUp 0.3s forwards;
     }
     @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-10px); } 
+      from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: translateY(0); }
     }
     @keyframes slideUp {
-      from { opacity: 1; transform: translateY(0); } 
+      from { opacity: 1; transform: translateY(0); }
       to { opacity: 0; transform: translateY(-10px); }
+    }
+
+    /* Sur mobile, on empile le texte et l'image en colonne */
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column;     /* le texte et l'image passent en colonne */
+        align-items: center;       /* centrer horizontalement */
+      }
+      .main-container > div {
+        margin-bottom: 2rem;       /* espace entre texte et image */
+      }
+      .image-container {
+        margin-left: auto;         /* pousser l'image à droite */
+      }
+      .image-container img {
+        width: 16rem;  /* w-64 */
+        height: 16rem; /* h-64 */
+      }
     }
   </style>
 </head>
@@ -112,7 +129,7 @@
       <a href="write.html">📩 Write to Me</a>
     </div>
   </div>
-  
+
   <!-- Top Right Controls -->
   <div class="absolute top-4 right-4 flex items-center space-x-4">
     <button id="toggleTheme" class="px-4 py-2 bg-gray-700 rounded-lg">Dark / White</button>
@@ -124,9 +141,10 @@
       <span class="absolute left-2 top-1/2 transform -translate-y-1/2">🌍</span>
     </div>
   </div>
-  
+
   <!-- Main Content -->
-  <div class="ml-24 p-10 flex justify-between items-center">
+  <!-- On ajoute la classe main-container pour gérer le layout mobile -->
+  <div class="ml-24 p-10 flex justify-between items-center main-container">
     <div class="ml-8">
       <h1 class="text-5xl font-bold">
         Hi !!! 👋, I am <span class="text-blue-400">Ange Elvis</span>
@@ -163,8 +181,8 @@
         </a>
       </div>
     </div>
-    <!-- Profile Image -->
-    <div class="flex-shrink-0 self-end mr-10">
+    <!-- Profile Image : on ajoute la classe image-container pour la margin-left sur mobile -->
+    <div class="flex-shrink-0 self-end mr-10 image-container">
       <img id="profileImage" src="images/photo.jpg" alt="Ange Elvis" class="w-96 h-96 object-cover rounded-lg shadow-lg transition-all duration-500">
     </div>
   </div>
@@ -186,7 +204,6 @@
       } else {
         profileImg.classList.remove("grayscale");
       }
-      // Forcer le bouton "Write to me" à conserver son fond bleu et son texte blanc
       writeButton.classList.remove("bg-gray-500");
       writeButton.classList.add("bg-blue-500");
     });
@@ -207,5 +224,3 @@
   </script>
 </body>
 </html>
-
-
