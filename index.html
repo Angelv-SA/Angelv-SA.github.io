@@ -17,7 +17,6 @@
       border-style: solid;
       animation: borderAnimation 1.5s infinite alternate;
     }
-    /* Effet hover pour le bouton */
     .hover-effect:hover {
       transform: scale(1.1);
       box-shadow: 0 0 15px rgba(59,130,246,0.8);
@@ -70,46 +69,61 @@
       margin-top: 10px;
       border-top: 1px solid #374151;
       padding-top: 10px;
+      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+    .menu-dropdown.show {
+      display: flex;
+      max-height: 300px;
+      opacity: 1;
     }
     .menu-dropdown a {
-      padding: 10px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
       font-size: 0.9rem;
+      color: #93c5fd;
+      transition: color 0.3s;
     }
-    /* Transitions pour le menu déroulant */
-    .dropdown-enter {
-      animation: slideDown 0.3s forwards;
+    .menu-dropdown a:hover {
+      color: white;
     }
-    .dropdown-leave {
-      animation: slideUp 0.3s forwards;
+    .menu-dropdown a span {
+      margin-right: 8px;
+      font-size: 1.5rem;
     }
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-10px); } 
-      to { opacity: 1; transform: translateY(0); }
+    /* Contenu principal */
+    .content {
+      margin-left: 160px; /* Espace pour la sidebar */
+      padding: 20px;
     }
-    @keyframes slideUp {
-      from { opacity: 1; transform: translateY(0); } 
-      to { opacity: 0; transform: translateY(-10px); }
-    }
-  </style>
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .sidebar { width: 100px; padding: 15px 5px; }
+      .sidebar a, .sidebar button { font-size: 0.8rem; margin-bottom: 15px; }
+      .content { margin-left: 120px; padding: 10px; text-align: center; }\n      h1 { font-size: 1.75rem; }\n      p { font-size: 1rem; }\n      img#profileImage { width: 150px; height: 150px; }\n    }\n  </style>
 </head>
 <body class="bg-gray-900 text-white transition-all duration-500">
   <!-- Barre latérale -->
   <div class="sidebar">
-    <!-- Onglet Home -->
-    <a href="index.html" class="text-4xl font-bold">
+    <!-- Bouton Home agrandi -->
+    <a href="index.html" class="flex flex-col items-center text-4xl font-bold">
       🏠<br><span class="text-xl">Home</span>
     </a>
-    <!-- Bouton Menu -->
-    <button id="menuButton" class="text-3xl">
+    <!-- Bouton Menu avec libellé -->
+    <button id="menuButton" class="flex flex-col items-center text-3xl">
       ☰<br><span class="text-lg font-semibold">Menu</span>
     </button>
     <!-- Menu déroulant -->
     <div id="menuDropdown" class="menu-dropdown">
-      <a href="about.html">ℹ️ About Me</a>
-      <a href="skills.html">🛠️ Skills</a>
-      <a href="diploma.html">🎓 Diploma</a>
-      <a href="projects.html">📁 Projects</a>
-      <a href="write.html">📩 Write to Me</a>
+      <a href="About.html"><span>ℹ️</span> About Me</a>
+      <a href="Skills.html"><span>🛠️</span> Skills</a>
+      <a href="Diploma.html"><span>🎓</span> Diploma</a>
+      <a href="Projects.html"><span>📁</span> Projects</a>
+      <a href="Write.html"><span>📩</span> Write to Me</a>
     </div>
   </div>
   
@@ -117,7 +131,7 @@
   <div class="absolute top-4 right-4 flex items-center space-x-4">
     <button id="toggleTheme" class="px-4 py-2 bg-gray-700 rounded-lg">Dark / White</button>
     <div class="relative">
-      <select id="languageSelect" class="bg-gray-700 text-white px-10 py-2 rounded-lg appearance-none">
+      <select id="languageSelect" class="bg-gray-700 text-white px-4 py-2 rounded-lg appearance-none">
         <option value="en">🇬🇧 English</option>
         <option value="fr">🇫🇷 Français</option>
       </select>
@@ -125,86 +139,64 @@
     </div>
   </div>
   
-  <!-- Main Content -->
-  <div class="ml-24 p-10 flex justify-between items-center">
-    <div class="ml-8">
-      <h1 class="text-5xl font-bold">
-        Hi !!! 👋, I am <span class="text-blue-400">Ange Elvis</span>
-      </h1>
-      <p class="mt-4 text-lg font-bold">
-        - Energy Systems Design Engineer<br>
-        - Develops solutions based on IoT and AI<br>
-        - Passionate about innovation
-      </p>
-      <button id="writeButton" class="mt-6 px-6 py-3 bg-blue-500 text-white font-bold rounded-lg shadow-lg animated-border hover-effect">
-        Write to me
-      </button>
-      <script>
-        document.getElementById("writeButton").addEventListener("click", function() {
-          window.location.href = "write.html";
-        });
-      </script>
-      <div class="grid grid-cols-2 gap-4 mt-8">
-        <a href="projects.html" class="p-6 border-4 border-dashed border-blue-400 rounded-lg text-center shadow-lg hover:shadow-xl flex flex-col items-center">
-          <span class="text-3xl">📁</span>
-          <span class="font-bold text-white mt-2">PROJECTS</span>
-        </a>
-        <a href="about.html" class="p-6 border-4 border-dashed border-green-400 rounded-lg text-center shadow-lg hover:shadow-xl flex flex-col items-center">
-          <span class="text-3xl">ℹ️</span>
-          <span class="font-bold text-white mt-2">ABOUT ME</span>
-        </a>
-        <a href="skills.html" class="p-6 border-4 border-dashed border-yellow-400 rounded-lg text-center shadow-lg hover:shadow-xl flex flex-col items-center">
-          <span class="text-3xl">🛠️</span>
-          <span class="font-bold text-white mt-2">SKILLS</span>
-        </a>
-        <a href="diploma.html" class="p-6 border-4 border-dashed border-red-400 rounded-lg text-center shadow-lg hover:shadow-xl flex flex-col items-center">
-          <span class="text-3xl">🎓</span>
-          <span class="font-bold text-white mt-2">DIPLOMA</span>
-        </a>
-      </div>
+  <!-- Contenu principal -->
+  <div class="content">
+    <h1 class="text-5xl font-bold">Hi!!! 👋, I am <span class="text-blue-400">Ange Elvis</span></h1>
+    <p class="mt-4 text-lg font-bold">- Energy Systems Design Engineer<br>- Develops solutions based on IoT and AI<br>- Passionate about innovation</p>
+    <button id="writeButton" class="mt-4 px-6 py-3 bg-blue-500 text-white font-bold rounded-lg shadow-lg animated-border hover-effect">Write to me</button>
+    <script>
+      document.getElementById("writeButton").addEventListener("click", function() {
+        window.location.href = "Write.html";
+      });
+    </script>
+    <div class="grid grid-cols-2 gap-4 mt-8 mx-auto max-w-xl">
+      <a href="Projects.html" class="p-6 border-2 border-dashed rounded-lg text-center hover:shadow-xl flex flex-col items-center">
+        <span class="text-3xl">📁</span>
+        <span class="font-bold text-white mt-2">PROJECTS</span>
+      </a>
+      <a href="About.html" class="p-6 border-2 border-dashed rounded-lg text-center hover:shadow-xl flex flex-col items-center">
+        <span class="text-3xl">ℹ️</span>
+        <span class="font-bold text-white mt-2">ABOUT ME</span>
+      </a>
+      <a href="Skills.html" class="p-6 border-2 border-dashed rounded-lg text-center hover:shadow-xl flex flex-col items-center">
+        <span class="text-3xl">🛠️</span>
+        <span class="font-bold text-white mt-2">SKILLS</span>
+      </a>
+      <a href="Diploma.html" class="p-6 border-2 border-dashed rounded-lg text-center hover:shadow-xl flex flex-col items-center">
+        <span class="text-3xl">🎓</span>
+        <span class="font-bold text-white mt-2">DIPLOMA</span>
+      </a>
     </div>
-    <!-- Profile Image -->
-    <div class="flex-shrink-0 self-end mr-10">
-      <img id="profileImage" src="images/photo.jpg" alt="Ange Elvis" class="w-96 h-96 object-cover rounded-lg shadow-lg transition-all duration-500">
-    </div>
+  </div>
+  
+  <!-- Profil Image -->
+  <div class="absolute right-10 bottom-10">
+    <img id="profileImage" src="images/photo.jpg" alt="Ange Elvis" class="w-96 h-96 object-cover rounded-lg shadow-lg transition-all duration-500">
   </div>
   
   <!-- Footer -->
-  <div class="text-center mt-10 text-gray-400">
+  <footer class="text-center mt-10 text-gray-400">
     © 2024 - Sawadogo Ange Elvis. All rights reserved.
-  </div>
+  </footer>
   
   <script>
-    // Toggle du thème (mode sombre / clair) et forçage du bouton Write to me en bleu
-    document.getElementById("toggleTheme").addEventListener("click", function () {
+    // Toggle du thème (mode sombre / clair)
+    document.getElementById("toggleTheme").addEventListener("click", function() {
       document.body.classList.toggle("bg-gray-900");
       document.body.classList.toggle("bg-white");
       let profileImg = document.getElementById("profileImage");
-      let writeButton = document.getElementById("writeButton");
       if (document.body.classList.contains("bg-white")) {
         profileImg.classList.add("grayscale");
       } else {
         profileImg.classList.remove("grayscale");
       }
-      // Forcer le bouton "Write to me" à conserver son fond bleu et son texte blanc
-      writeButton.classList.remove("bg-gray-500");
-      writeButton.classList.add("bg-blue-500");
     });
     
-    // Toggle du menu déroulant dans la barre latérale avec animation
+    // Toggle du menu déroulant dans la barre latérale
     document.getElementById("menuButton").addEventListener("click", function() {
       let dropdown = document.getElementById("menuDropdown");
-      if (dropdown.style.display === "none" || dropdown.style.display === "") {
-        dropdown.style.display = "flex";
-        dropdown.classList.add("dropdown-enter");
-        dropdown.classList.remove("dropdown-leave");
-      } else {
-        dropdown.classList.add("dropdown-leave");
-        dropdown.classList.remove("dropdown-enter");
-        setTimeout(() => { dropdown.style.display = "none"; }, 300);
-      }
+      dropdown.classList.toggle("show");
     });
   </script>
 </body>
 </html>
-
