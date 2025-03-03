@@ -17,6 +17,7 @@
       border-style: solid;
       animation: borderAnimation 1.5s infinite alternate;
     }
+    /* Effet hover pour le bouton */
     .hover-effect:hover {
       transform: scale(1.1);
       box-shadow: 0 0 15px rgba(59,130,246,0.8);
@@ -36,7 +37,7 @@
       top: 0;
       left: 0;
       width: 140px;
-      height: 100vh; /* On conserve pour l'ordi */
+      height: 100vh;
       background-color: #1f2937;
       padding: 20px 10px;
       box-shadow: 4px 0 8px rgba(0,0,0,0.3);
@@ -124,10 +125,9 @@
     </div>
   </div>
   
-  <!-- Main Content : on passe en flex-col sur mobile, flex-row sur desktop -->
-  <div class="ml-24 p-10 flex flex-col md:flex-row justify-between items-center">
-    <!-- Texte à gauche -->
-    <div class="ml-8 mb-8 md:mb-0">
+  <!-- Main Content -->
+  <div class="ml-24 p-10 flex justify-between items-center">
+    <div class="ml-8">
       <h1 class="text-5xl font-bold">
         Hi !!! 👋, I am <span class="text-blue-400">Ange Elvis</span>
       </h1>
@@ -163,9 +163,9 @@
         </a>
       </div>
     </div>
-    <!-- Profile Image à droite (se réduit sur mobile) -->
-    <div class="flex-shrink-0 mr-10">
-      <img id="profileImage" src="images/photo.jpg" alt="Ange Elvis" class="w-80 h-80 md:w-96 md:h-96 object-cover rounded-lg shadow-lg transition-all duration-500">
+    <!-- Profile Image -->
+    <div class="flex-shrink-0 self-end mr-10">
+      <img id="profileImage" src="images/photo.jpg" alt="Ange Elvis" class="w-96 h-96 object-cover rounded-lg shadow-lg transition-all duration-500">
     </div>
   </div>
   
@@ -175,7 +175,7 @@
   </div>
   
   <script>
-    // Toggle du thème (mode sombre / clair)
+    // Toggle du thème (mode sombre / clair) et forçage du bouton Write to me en bleu
     document.getElementById("toggleTheme").addEventListener("click", function () {
       document.body.classList.toggle("bg-gray-900");
       document.body.classList.toggle("bg-white");
@@ -207,3 +207,5 @@
   </script>
 </body>
 </html>
+
+
