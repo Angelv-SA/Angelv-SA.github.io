@@ -1,15 +1,16 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Ange Elvis</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Border animation for the button */
+    /* Animation de bordure pour le bouton */
     @keyframes borderAnimation {
-      0%,100% { border-color: #3b82f6; }
-      50%      { border-color: #93c5fd; }
+      0% { border-color: #3b82f6; }
+      50% { border-color: #93c5fd; }
+      100% { border-color: #3b82f6; }
     }
     .animated-border {
       border-width: 3px;
@@ -19,67 +20,107 @@
     .hover-effect:hover {
       transform: scale(1.1);
       box-shadow: 0 0 15px rgba(59,130,246,0.8);
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     }
-    body.bg-white * { color: #3b82f6 !important; }
-    #writeButton { color: white !important; }
-
-    /* Sidebar */
+    /* En mode clair, forcer la couleur de texte en bleu */
+    body.bg-white * {
+      color: #3b82f6 !important;
+    }
+    /* Override pour le bouton Write to me */
+    #writeButton {
+      color: white !important;
+    }
+    /* Barre latérale */
     .sidebar {
-      position: fixed; top:0; left:0;
-      width: 140px; height: 100vh;
-      background: #1f2937; padding:20px 10px;
-      box-shadow:4px 0 8px rgba(0,0,0,0.3);
-      display:flex; flex-direction:column; align-items:center;
-      z-index:50;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 140px;
+      height: 100vh;
+      background-color: #1f2937;
+      padding: 20px 10px;
+      box-shadow: 4px 0 8px rgba(0,0,0,0.3);
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .sidebar a, .sidebar button {
-      width:100%; text-align:center; margin-bottom:20px;
-      font:bold 1rem Arial; background:none; border:none;
-      color:#93c5fd; cursor:pointer; text-transform:uppercase;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #93c5fd;
     }
-    .sidebar a:hover, .sidebar button:hover { color:white; }
+    .sidebar a:hover, .sidebar button:hover {
+      color: white;
+    }
+    /* Menu déroulant dans la sidebar */
     .menu-dropdown {
-      display:none; flex-direction:column; width:100%;
-      background:#1f2937; margin-top:10px;
-      border-top:1px solid #374151; padding-top:10px;
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: #1f2937;
+      margin-top: 10px;
+      border-top: 1px solid #374151;
+      padding-top: 10px;
     }
     .menu-dropdown a {
-      padding:10px 0; font-size:0.9rem; color:#93c5fd;
+      padding: 10px 0;
+      font-size: 0.9rem;
     }
-    .menu-dropdown a:hover {
-      background:#374151; color:white;
+    /* Transitions pour le menu déroulant */
+    .dropdown-enter {
+      animation: slideDown 0.3s forwards;
     }
-    .dropdown-enter { animation: slideDown 0.3s forwards; }
-    .dropdown-leave { animation: slideUp  0.3s forwards; }
-    @keyframes slideDown { from{opacity:0;transform:translateY(-10px);} to{opacity:1;transform:translateY(0);} }
-    @keyframes slideUp   { from{opacity:1;transform:translateY(0);} to{opacity:0;transform:translateY(-10px);} }
+    .dropdown-leave {
+      animation: slideUp 0.3s forwards;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(-10px); }
+    }
 
-    /* Mobile adjustments */
+    /* Sur mobile, on empile le texte et l'image en colonne */
     @media (max-width: 768px) {
-      /* Remove left margin on mobile */
-      .main-container { margin-left: 0 !important; padding:1rem !important; }
-      /* Stack text then image */
-      .main-container { flex-direction: column !important; }
-      .image-container { margin-top: 2rem; }
-      /* Shrink image */
-      #profileImage { width: 12rem !important; height:12rem !important; }
-      /* Grid to one column */
-      .grid-cols-2 { grid-template-columns: 1fr !important; }
-      /* Sidebar becomes top bar */
-      .sidebar {
-        width:100%; height:auto; flex-direction:row;
-        justify-content:space-around; box-shadow:none;
+      .main-container {
+        flex-direction: column;     /* le texte et l'image passent en colonne */
+        align-items: center;       /* centrer horizontalement */
       }
-      .sidebar a, .sidebar button { margin-bottom:0; font-size:0.9rem; }
+      .main-container > div {
+        margin-bottom: 2rem;       /* espace entre texte et image */
+      }
+      .image-container {
+        margin-left: auto;         /* pousser l'image à droite */
+      }
+      .image-container img {
+        width: 16rem;  /* w-64 */
+        height: 16rem; /* h-64 */
+      }
     }
   </style>
 </head>
 <body class="bg-gray-900 text-white transition-all duration-500">
-  <!-- Sidebar -->
+  <!-- Barre latérale -->
   <div class="sidebar">
-    <a href="index.html" class="text-4xl font-bold">🏠 Home</a>
-    <button id="menuButton" class="text-3xl">☰ Menu</button>
+    <!-- Onglet Home -->
+    <a href="index.html" class="text-4xl font-bold">
+      🏠<br><span class="text-xl">Home</span>
+    </a>
+    <!-- Bouton Menu -->
+    <button id="menuButton" class="text-3xl">
+      ☰<br><span class="text-lg font-semibold">Menu</span>
+    </button>
+    <!-- Menu déroulant -->
     <div id="menuDropdown" class="menu-dropdown">
       <a href="about.html">ℹ️ About Me</a>
       <a href="skills.html">🛠️ Skills</a>
@@ -89,11 +130,11 @@
     </div>
   </div>
 
-  <!-- Top Controls -->
+  <!-- Top Right Controls -->
   <div class="absolute top-4 right-4 flex items-center space-x-4">
     <button id="toggleTheme" class="px-4 py-2 bg-gray-700 rounded-lg">Dark / White</button>
     <div class="relative">
-      <select id="languageSelect" class="bg-gray-700 text-white px-4 py-2 rounded-lg">
+      <select id="languageSelect" class="bg-gray-700 text-white px-10 py-2 rounded-lg appearance-none">
         <option value="en">🇬🇧 English</option>
         <option value="fr">🇫🇷 Français</option>
       </select>
@@ -102,60 +143,83 @@
   </div>
 
   <!-- Main Content -->
-  <div class="main-container ml-36 p-10 flex justify-between items-center">
-    <div class="text-container">
-      <h1 class="text-5xl font-bold">Hi !!! 👋, I am <span class="text-blue-400">Ange Elvis</span></h1>
-      <p class="mt-4 text-lg font-bold">- Energy Systems Design Engineer<br>
+  <!-- On ajoute la classe main-container pour gérer le layout mobile -->
+  <div class="ml-24 p-10 flex justify-between items-center main-container">
+    <div class="ml-8">
+      <h1 class="text-5xl font-bold">
+        Hi !!! 👋, I am <span class="text-blue-400">Ange Elvis</span>
+      </h1>
+      <p class="mt-4 text-lg font-bold">
+        - Energy Systems Design Engineer<br>
         - Develops solutions based on IoT and AI<br>
         - Passionate about innovation
       </p>
-      <button id="writeButton" class="mt-6 px-6 py-3 bg-blue-500 font-bold rounded-lg animated-border hover-effect shadow-lg">
+      <button id="writeButton" class="mt-6 px-6 py-3 bg-blue-500 text-white font-bold rounded-lg shadow-lg animated-border hover-effect">
         Write to me
       </button>
+      <script>
+        document.getElementById("writeButton").addEventListener("click", function() {
+          window.location.href = "write.html";
+        });
+      </script>
       <div class="grid grid-cols-2 gap-4 mt-8">
-        <a href="projects.html" class="section-box">📁 Projects</a>
-        <a href="about.html"    class="section-box">ℹ️ About Me</a>
-        <a href="skills.html"   class="section-box">🛠️ Skills</a>
-        <a href="diploma.html"  class="section-box">🎓 Diploma</a>
+        <a href="projects.html" class="p-6 border-4 border-dashed border-blue-400 rounded-lg text-center shadow-lg hover:shadow-xl flex flex-col items-center">
+          <span class="text-3xl">📁</span>
+          <span class="font-bold text-white mt-2">PROJECTS</span>
+        </a>
+        <a href="about.html" class="p-6 border-4 border-dashed border-green-400 rounded-lg text-center shadow-lg hover:shadow-xl flex flex-col items-center">
+          <span class="text-3xl">ℹ️</span>
+          <span class="font-bold text-white mt-2">ABOUT ME</span>
+        </a>
+        <a href="skills.html" class="p-6 border-4 border-dashed border-yellow-400 rounded-lg text-center shadow-lg hover:shadow-xl flex flex-col items-center">
+          <span class="text-3xl">🛠️</span>
+          <span class="font-bold text-white mt-2">SKILLS</span>
+        </a>
+        <a href="diploma.html" class="p-6 border-4 border-dashed border-red-400 rounded-lg text-center shadow-lg hover:shadow-xl flex flex-col items-center">
+          <span class="text-3xl">🎓</span>
+          <span class="font-bold text-white mt-2">DIPLOMA</span>
+        </a>
       </div>
     </div>
-    <div class="image-container">
-      <img id="profileImage" src="images/photo.jpg" alt="Ange Elvis"
-           class="w-96 h-96 object-cover rounded-lg shadow-lg transition-all duration-500">
+    <!-- Profile Image : on ajoute la classe image-container pour la margin-left sur mobile -->
+    <div class="flex-shrink-0 self-end mr-10 image-container">
+      <img id="profileImage" src="images/photo.jpg" alt="Ange Elvis" class="w-96 h-96 object-cover rounded-lg shadow-lg transition-all duration-500">
     </div>
   </div>
-
-  <div class="text-center mt-10 text-gray-400">© 2024 - Sawadogo Ange Elvis. All rights reserved.</div>
-
-  <script src="script.js"></script>
+  
+  <!-- Footer -->
+  <div class="text-center mt-10 text-gray-400">
+    © 2024 - Sawadogo Ange Elvis. All rights reserved.
+  </div>
+  
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Theme toggle
-      document.getElementById('toggleTheme').addEventListener('click', () => {
-        document.body.classList.toggle('bg-gray-900');
-        document.body.classList.toggle('bg-white');
-        document.getElementById('profileImage').classList.toggle('grayscale');
-        document.getElementById('writeButton').classList.replace('bg-gray-500','bg-blue-500');
-      });
-      // Dropdown toggle
-      const menuBtn = document.getElementById('menuButton');
-      const dd      = document.getElementById('menuDropdown');
-      menuBtn.addEventListener('click', e => {
-        if (dd.style.display==='flex') {
-          dd.classList.replace('dropdown-enter','dropdown-leave');
-          setTimeout(()=>dd.style.display='none',300);
-        } else {
-          dd.style.display='flex';
-          dd.classList.replace('dropdown-leave','dropdown-enter');
-        }
-        e.stopPropagation();
-      });
-      document.addEventListener('click', e => {
-        if (dd.style.display==='flex' && !dd.contains(e.target) && e.target!==menuBtn) {
-          dd.classList.replace('dropdown-enter','dropdown-leave');
-          setTimeout(()=>dd.style.display='none',300);
-        }
-      });
+    // Toggle du thème (mode sombre / clair) et forçage du bouton Write to me en bleu
+    document.getElementById("toggleTheme").addEventListener("click", function () {
+      document.body.classList.toggle("bg-gray-900");
+      document.body.classList.toggle("bg-white");
+      let profileImg = document.getElementById("profileImage");
+      let writeButton = document.getElementById("writeButton");
+      if (document.body.classList.contains("bg-white")) {
+        profileImg.classList.add("grayscale");
+      } else {
+        profileImg.classList.remove("grayscale");
+      }
+      writeButton.classList.remove("bg-gray-500");
+      writeButton.classList.add("bg-blue-500");
+    });
+    
+    // Toggle du menu déroulant dans la barre latérale avec animation
+    document.getElementById("menuButton").addEventListener("click", function() {
+      let dropdown = document.getElementById("menuDropdown");
+      if (dropdown.style.display === "none" || dropdown.style.display === "") {
+        dropdown.style.display = "flex";
+        dropdown.classList.add("dropdown-enter");
+        dropdown.classList.remove("dropdown-leave");
+      } else {
+        dropdown.classList.add("dropdown-leave");
+        dropdown.classList.remove("dropdown-enter");
+        setTimeout(() => { dropdown.style.display = "none"; }, 300);
+      }
     });
   </script>
 </body>
