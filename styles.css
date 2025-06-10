@@ -1,11 +1,11 @@
-/* Fond sombre */
+/* Fond sombre et typographie */
 body {
     background-color: #121212;
     color: white;
     font-family: Arial, sans-serif;
 }
 
-/* Icônes de navigation à gauche */
+/* Navigation icons (sidebar) */
 .nav-icons {
     display: flex;
     gap: 15px;
@@ -18,16 +18,17 @@ body {
     text-decoration: none;
 }
 
-/* Conteneur principal */
+/* Conteneur principal responsive */
 .main-content {
     padding-top: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 80vh;
+    flex-wrap: wrap;
 }
 
-/* Salutation */
+/* Salutation et nom */
 .greeting {
     font-size: 32px;
     font-weight: bold;
@@ -49,21 +50,18 @@ body {
     margin: 5px 0;
 }
 
-/* Style pour la photo de profil */
-.profile-pic {
-    width: 280px;
-    height: 280px;
+/* Photo de profil responsive */
+.profile-pic,
+.image-container img {
     object-fit: cover;
     border: 5px solid white;
     border-radius: 10px;
+    transition: width 0.3s ease, height 0.3s ease;
 }
 
 /* Bouton animé "Write Me" */
-.write-me-container {
-    margin: 20px 0;
-}
-
-.write-me-btn {
+.write-me-btn,
+#writeButton {
     background-color: #00bcd4;
     color: white;
     padding: 15px 30px;
@@ -75,13 +73,15 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-.write-me-btn:hover {
+.write-me-btn:hover,
+#writeButton:hover {
     background-color: #028a94;
     transform: scale(1.1);
 }
 
-/* Section des rubriques */
-.sections-container {
+/* Sections rubriques (grid) */
+.sections-container,
+.grid.grid-cols-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -89,41 +89,65 @@ body {
     justify-content: center;
 }
 
-/* Carrés des rubriques */
+/* Carrés rubriques responsive */
 .section-box {
     border: 3px dashed white;
     background-color: rgba(255, 255, 255, 0.2);
-    padding: 30px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 18px;
     font-weight: bold;
     width: 150px;
     height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-radius: 10px;
     color: white;
     transition: all 0.3s ease-in-out;
 }
 
-
-@media (max-width: 768px) {
-  .image-container {
-    transform: translateX(20px); /* Pousse l'image de 20px vers la droite, ajuste si besoin */
-  }
-  .image-container img {
-    width: 16rem;  /* Réduit légèrement l'image sur mobile, ajuste selon tes préférences */
-    height: 16rem;
-  }
-}
-
-
-
-
-
-
 .section-box:hover {
     background-color: rgba(255, 255, 255, 0.4);
     transform: scale(1.05);
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+  /* Sidebar becomes top bar */
+  .sidebar {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    box-shadow: none;
+  }
+  .sidebar a, .sidebar button {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  /* Main content stacking */
+  .main-container {
+    margin-left: 0 !important;
+    padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  .text-container {
+    margin-right: 0;
+    text-align: center;
+  }
+
+  /* Profile image smaller */
+  .image-container img {
+    width: 12rem;
+    height: 12rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Grid one column */
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
 }
